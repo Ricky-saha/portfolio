@@ -422,7 +422,7 @@ const Portfolio = () => {
             </div>
 
             {/* Right Column - Image */}
-            <div className="relative flex justify-center md:justify-end">
+            <div className=" hidden md:flex relative flex justify-center md:justify-end">
               <div className="relative w-full max-w-md">
                 {/* Decorative gradient background */}
                 <div className={`absolute inset-0 rounded-2xl bg-gradient-to-br from-indigo-500/20 to-purple-600/20 blur-3xl transform -rotate-6`} />
