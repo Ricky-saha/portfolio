@@ -47,7 +47,12 @@ const ResumeViewer = ({ src, isDarkMode, primaryBtn, outlineBtn, subtle, border,
       .then(([pdfjsLib, workerSrcModule]) => {
         if (cancelled) return;
         pdfjsLib.GlobalWorkerOptions.workerSrc = workerSrcModule.default;
-        return pdfjsLib.getDocument({ url: src }).promise;
+        return pdfjsLib.getDocument({
+          url: src,
+          cMapUrl: '/pdfjs/cmaps/',
+          cMapPacked: true,
+          standardFontDataUrl: '/pdfjs/standard_fonts/',
+        }).promise;
       })
       .then((pdf) => {
         if (cancelled || !pdf) return;
@@ -685,7 +690,7 @@ const Portfolio = () => {
                     onClick={(e) => scrollToSection(e, '#resume')}
                     className={`px-8 py-4 rounded-full font-medium border transition-all duration-200 ease-out flex items-center gap-2 ${outlineBtn}`}
                   >
-                    View Résumé <FileText size={18} />
+                    View Resume <FileText size={18} />
                   </a>
                 </div>
               </Reveal>
@@ -933,7 +938,10 @@ const Portfolio = () => {
           </Reveal>
 
           <div className={`mt-12 pt-8 border-t text-sm font-mono ${border} ${subtle}`}>
-            © 2026 Ricky Saha · Built with React &amp; Tailwind CSS
+            © 2026 Ricky Saha ·{' '}
+            <a href="tel:+919354725926" className={`transition-colors duration-200 ${isDarkMode ? 'hover:text-white' : 'hover:text-black'}`}>
+              +91 93547 25926
+            </a>
           </div>
         </div>
       </section>
